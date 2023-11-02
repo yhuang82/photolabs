@@ -6,11 +6,11 @@ import TopNavigation from "components/TopNavigationBar";
 
 // Note: Rendering a single component to build components in isolation
 
-const HomeRoute = () => {
+const HomeRoute = (props) => {
   return (
     <div className="home-route">
-      <TopNavigation />
-      <PhotoList />
+      <TopNavigation topics={props.topics} />
+      <PhotoList photos={props.photos} />
     </div>
   );
 };
