@@ -1,9 +1,7 @@
 import React from "react";
 
-import PhotoListItem from "./components/PhotoListItem";
 import "./App.scss";
-import PhotoList from "components/PhotoList";
-
+import HomeRoute from "routes/HomeRoute";
 
 
 
@@ -14,15 +12,7 @@ import PhotoList from "components/PhotoList";
 const App = () => {
   return (
     <div className="App">
-      {/* { Array.from(Array(3)).map((_, index) => <PhotoListItem
-          key={index}
-          id={id}
-          location={location}
-          imageSource={imageSource}
-          username={username}
-          profile={profile}
-        />) } */}
-      <PhotoList />
+      <HomeRoute />
     </div>
   );
 };
