@@ -1,38 +1,41 @@
-import React from 'react';
+import React from "react";
 
-import '../styles/PhotoDetailsModal.scss'
-import closeSymbol from '../assets/closeSymbol.svg';
-import PhotoList from 'components/PhotoList';
-import PhotoFavButton from 'components/PhotoFavButton';
+import "../styles/PhotoDetailsModal.scss";
+import closeSymbol from "../assets/closeSymbol.svg";
+import PhotoList from "components/PhotoList";
+import PhotoFavButton from "components/PhotoFavButton";
 const PhotoDetailsModal = (props) => {
   const {
     isModalOpen,
-    toggleModal,
-    seletedPhotoData,
-    toggleFavs,
+    onClosePhotoDetailsModal,
+    selectedPhotoData,
+    updateToFavPhotoIds,
     isFav,
-    togglePhotoData,
+    setPhotoSelected,
   } = props;
 
   if (!isModalOpen) {
     return null;
   }
 
-
-  const { id, location, urls, user } = seletedPhotoData; 
-  const simPhotoArray = Object.values(seletedPhotoData.similar_photos);
+  const { id, location, urls, user } = selectedPhotoData;
+  const simPhotoArray = Object.values(selectedPhotoData.similar_photos);
 
   return (
     <div className="photo-details-modal">
       <button
         className="photo-details-modal__close-button"
-        onClick={toggleModal}
+        onClick={onClosePhotoDetailsModal}
       >
         <img src={closeSymbol} alt="close symbol" />
       </button>
 
       <div className="photo-details-modal__photo-container">
-        <PhotoFavButton toggleFavs={toggleFavs} isFav={isFav} id={id} />
+        <PhotoFavButton
+          updateToFavPhotoIds={updateToFavPhotoIds}
+          isFav={isFav}
+          id={id}
+        />
         <img src={urls.full} className="photo-details-modal__image" />
         <div className="photo-details-modal__photographer-details">
           <img
@@ -51,10 +54,10 @@ const PhotoDetailsModal = (props) => {
       <PhotoList
         className="details-modal__images"
         photos={simPhotoArray}
-        toggleFavs={toggleFavs}
+        updateToFavPhotoIds={updateToFavPhotoIds}
         isFav={isFav}
-        toggleModal={toggleModal}
-        togglePhotoData={togglePhotoData}
+        onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+        setPhotoSelected={setPhotoSelected}
       />
     </div>
   );

@@ -11,24 +11,22 @@ const HomeRoute = (props) => {
   const {
     topics,
     photos,
-    toggleModal,
-    togglePhotoData,
+    onClosePhotoDetailsModal,
+    setPhotoSelected,
     favs,
-    toggleFavs,
+    updateToFavPhotoIds,
     isFav,
   } = props;
-  
-  
 
   return (
     <div className="home-route">
       <TopNavigation topics={topics} favs={favs} />
       <PhotoList
         photos={photos}
-        toggleFavs={toggleFavs}
+        updateToFavPhotoIds={updateToFavPhotoIds}
         isFav={isFav}
-        toggleModal={toggleModal}
-        togglePhotoData={togglePhotoData}
+        onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+        setPhotoSelected={setPhotoSelected}
       />
     </div>
   );

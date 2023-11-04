@@ -5,21 +5,25 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = (props) => {
   const {
     photo,
-    toggleFavs,
+    updateToFavPhotoIds,
     isFav,
-    toggleModal,
-    togglePhotoData
+    onClosePhotoDetailsModal,
+    setPhotoSelected,
   } = props;
 
   const { id, location, urls, user } = photo;
   const handleImageClick = () => {
-    togglePhotoData(photo);
-    toggleModal()
-}
- 
+    setPhotoSelected(photo);
+    onClosePhotoDetailsModal();
+  };
+
   return (
     <li className="photo-list__item">
-      <PhotoFavButton toggleFavs={toggleFavs} isFav={isFav} id={id} />
+      <PhotoFavButton
+        updateToFavPhotoIds={updateToFavPhotoIds}
+        isFav={isFav}
+        id={id}
+      />
       <img
         src={urls.regular}
         className="photo-list__image"

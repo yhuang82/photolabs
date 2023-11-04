@@ -3,19 +3,23 @@ import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
-
-
 const PhotoList = (props) => {
-  const { photos, toggleFavs, isFav, toggleModal, togglePhotoData } = props;
-  
+  const {
+    photos,
+    updateToFavPhotoIds,
+    isFav,
+    onClosePhotoDetailsModal,
+    setPhotoSelected,
+  } = props;
+
   const photolist = photos.map((photo, index) => (
     <PhotoListItem
       key={index}
       photo={photo}
-      toggleFavs={toggleFavs}
+      updateToFavPhotoIds={updateToFavPhotoIds}
       isFav={isFav}
-      toggleModal={toggleModal}
-      togglePhotoData={togglePhotoData}
+      onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+      setPhotoSelected={setPhotoSelected}
     />
   ));
   return <ul className="photo-list">{photolist}</ul>;
