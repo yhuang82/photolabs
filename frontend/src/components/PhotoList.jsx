@@ -6,17 +6,16 @@ import PhotoListItem from "./PhotoListItem";
 
 
 const PhotoList = (props) => {
-  const {photos, toggleFavs, isFav} = props;
+  const { photos, toggleFavs, isFav, toggleModal, togglePhotoData } = props;
+  
   const photolist = photos.map((photo, index) => (
     <PhotoListItem
       key={index}
-      id={photo.id}
-      location={photo.location}
-      imageSource={photo.urls.regular}
-      username={photo.user.username}
-      profile={photo.user.profile}
+      photo={photo}
       toggleFavs={toggleFavs}
       isFav={isFav}
+      toggleModal={toggleModal}
+      togglePhotoData={togglePhotoData}
     />
   ));
   return <ul className="photo-list">{photolist}</ul>;
