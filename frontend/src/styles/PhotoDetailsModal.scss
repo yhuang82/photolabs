@@ -41,7 +41,7 @@
   margin: 16px;
   margin-top: 8px;
   align-items: center;
-}
+}//
 
 .photo-details-modal__photographer-details {
   display: flex;
@@ -75,4 +75,8 @@
   font-weight: 700;
   font-size: 12px;
   margin-left: 8px;
+}
+
+.photo-details-modal__photo-container {
+  margin-left: 40px;
 }

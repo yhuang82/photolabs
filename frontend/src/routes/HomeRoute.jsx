@@ -4,7 +4,6 @@ import "../styles/HomeRoute.scss";
 import PhotoList from "components/PhotoList";
 import TopNavigation from "components/TopNavigationBar";
 import { useState } from "react";
-import useToggleFavs from "hooks/useToggleFavs";
 
 // Note: Rendering a single component to build components in isolation
 
@@ -21,7 +20,6 @@ const HomeRoute = (props) => {
   
   
 
-  console.log("reload");
   return (
     <div className="home-route">
       <TopNavigation topics={topics} favs={favs} />

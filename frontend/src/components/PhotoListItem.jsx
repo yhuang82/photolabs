@@ -10,8 +10,8 @@ const PhotoListItem = (props) => {
     toggleModal,
     togglePhotoData
   } = props;
-    
-  const {id, location, urls, user } = photo;
+
+  const { id, location, urls, user } = photo;
   const handleImageClick = () => {
     togglePhotoData(photo);
     toggleModal()
