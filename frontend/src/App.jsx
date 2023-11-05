@@ -5,7 +5,6 @@ import HomeRoute from "routes/HomeRoute";
 import photos from "./mocks/photos";
 import topics from "./mocks/topics";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
-import { useState } from "react";
 import useApplicationData from "hooks/useApplicationData";
 
 // Note: Rendering a single component to build components in isolation
@@ -21,14 +20,7 @@ const App = () => {
     isFav,
   } = useApplicationData();
 
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const onClosePhotoDetailsModal = () => setIsModalOpen(!isModalOpen);
-
-  // const [seletedPhotoData, setSelectedPhotoData] = useState(null);
-  // //function to update the seletedPhotoData
-  // const setPhotoSelected = (data) => {
-  //   setSelectedPhotoData(data)
-  // }
+  
 
   return (
     <div className="App">
