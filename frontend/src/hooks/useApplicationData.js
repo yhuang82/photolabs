@@ -6,6 +6,7 @@ export const ACTIONS = {
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
   SELECT_PHOTO: "SELECT_PHOTO",
   DISPLAY_PHOTO_DETAILS: "DISPLAY_PHOTO_DETAILS",
+  FETCH_ERROR: "FETCH_ERROR",
 };
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
   favs: [],
   isModalOpen: false,
   selectedPhotoData: null,
+  error: null, // add an error state
 };
 
 //Define my reduce function
@@ -42,6 +44,9 @@ const reducer = (state, action) => {
     case ACTIONS.SET_TOPIC_DATA:
       return { ...state, topics: action.payload };
 
+    case ACTIONS.FETCH_ERROR:
+      return { ...state, error: action.error };
+
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -66,32 +71,45 @@ const useApplicationData = () => {
 
   const isFav = (id) => state.favs.includes(id);
 
-  // implement the data fetch process(tips: cam put the dependency arry for adding new photo)
+  // Fetch photos with error handling(tips: can put the dependency arry for adding new photo)
   useEffect(() => {
     fetch("/api/photos")
-      .then((res) => res.json())
-      .then((data) =>
-        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
-      );
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok for get /api/photos");
+        }
+        return res.json();
+      })
+      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch((error) => {
+        dispatch({ type: ACTIONS.FETCH_ERROR, error });
+      });
   }, []);
 
-  // impelent the topic fetch process
-
+  // Fetch topics with error handling
   useEffect(() => {
     fetch("/api/topics")
-      .then((res) => res.json())
-      .then((data) =>
-        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data })
-      );
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok for get /api/topics");
+        }
+        return res.json();
+      })
+      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data }))
+      .catch((error) => dispatch({ type: ACTIONS.FETCH_ERROR, error }));
   }, []);
 
-  // implement the change topic:
+  // Implement the change topic with error handling
   const selectTopic = (id) => {
     fetch(`/api/topics/photos/${id}`)
-      .then((res) => res.json())
-      .then((data) =>
-        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
-      );
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
+      })
+      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch((error) => dispatch({ type: ACTIONS.FETCH_ERROR, error }));
   };
 
   return {

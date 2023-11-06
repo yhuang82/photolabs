@@ -18,11 +18,18 @@ const App = () => {
     onClosePhotoDetailsModal,
     setPhotoSelected,
     isFav,
-    selectTopic
+    selectTopic,
+    error,
   } = useApplicationData();
 
-  
+  if (error) {
+    // Render an error component or message
+    return (
+      <div className="error-message">An error occurred: {error.message}</div>
+    );
+  }
 
+  // If no error, render the main application content
   return (
     <div className="App">
       <HomeRoute

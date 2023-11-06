@@ -2,6 +2,21 @@ import React from "react";
 
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
+// Handle the image click event. lift out of the component 
+const handleImageClick = (
+  photo,
+  setPhotoSelected,
+  onClosePhotoDetailsModal
+) => {
+  // Use setPhotoSelected and onClosePhotoDetailsModal if available.
+  if (setPhotoSelected) {
+    setPhotoSelected(photo);
+  }
+  if (onClosePhotoDetailsModal) {
+    onClosePhotoDetailsModal();
+  }
+};
+
 const PhotoListItem = (props) => {
   const {
     photo,
@@ -12,15 +27,6 @@ const PhotoListItem = (props) => {
   } = props;
 
   const { id, location, urls, user } = photo;
-  const handleImageClick = () => {
-    // Use the setPhotoSelected function if available, or a no-op function
-    if (setPhotoSelected) {
-      setPhotoSelected(photo);
-    }
-    if (onClosePhotoDetailsModal) {
-      onClosePhotoDetailsModal();
-    }
-  };
 
   return (
     <li className="photo-list__item">
@@ -32,7 +38,9 @@ const PhotoListItem = (props) => {
       <img
         src={urls.regular}
         className="photo-list__image"
-        onClick={handleImageClick}
+        onClick={() =>
+          handleImageClick(photo, setPhotoSelected, onClosePhotoDetailsModal)
+        }
       />
       <div className="photo-list__user-details">
         <img src={user.profile} className="photo-list__user-profile" />

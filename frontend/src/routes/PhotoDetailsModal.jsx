@@ -11,7 +11,6 @@ const PhotoDetailsModal = (props) => {
     selectedPhotoData,
     updateToFavPhotoIds,
     isFav,
-    setPhotoSelected,
   } = props;
 
   if (!isModalOpen) {
