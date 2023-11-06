@@ -2,8 +2,6 @@ import React from "react";
 
 import "./App.scss";
 import HomeRoute from "routes/HomeRoute";
-import photos from "./mocks/photos";
-import topics from "./mocks/topics";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import useApplicationData from "hooks/useApplicationData";
 
@@ -11,13 +9,15 @@ import useApplicationData from "hooks/useApplicationData";
 
 const App = () => {
   const {
+    photos,
+    topics,
     favs,
     isModalOpen,
     selectedPhotoData,
     updateToFavPhotoIds,
     onClosePhotoDetailsModal,
     setPhotoSelected,
-    isFav,
+    isFav
   } = useApplicationData();
 
   
