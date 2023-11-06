@@ -16,11 +16,12 @@ const HomeRoute = (props) => {
     favs,
     updateToFavPhotoIds,
     isFav,
+    selectTopic
   } = props;
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} favs={favs} />
+      <TopNavigation topics={topics} favs={favs} selectTopic={selectTopic} />
       <PhotoList
         photos={photos}
         updateToFavPhotoIds={updateToFavPhotoIds}

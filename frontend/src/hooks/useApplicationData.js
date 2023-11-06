@@ -75,10 +75,6 @@ const useApplicationData = () => {
       );
   }, []);
 
-  // implement the change topic:
-  
-  
-
   // impelent the topic fetch process
 
   useEffect(() => {
@@ -89,12 +85,22 @@ const useApplicationData = () => {
       );
   }, []);
 
+  // implement the change topic:
+  const selectTopic = (id) => {
+    fetch(`/api/topics/photos/${id}`)
+      .then((res) => res.json())
+      .then((data) =>
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
+      );
+  };
+
   return {
     ...state,
     updateToFavPhotoIds,
     onClosePhotoDetailsModal,
     setPhotoSelected,
     isFav,
+    selectTopic,
   };
 };
 
