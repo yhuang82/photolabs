@@ -13,8 +13,13 @@ const PhotoListItem = (props) => {
 
   const { id, location, urls, user } = photo;
   const handleImageClick = () => {
-    setPhotoSelected(photo);
-    onClosePhotoDetailsModal();
+    // Use the setPhotoSelected function if available, or a no-op function
+    if (setPhotoSelected) {
+      setPhotoSelected(photo);
+    }
+    if (onClosePhotoDetailsModal) {
+      onClosePhotoDetailsModal();
+    }
   };
 
   return (

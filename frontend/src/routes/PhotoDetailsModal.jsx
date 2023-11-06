@@ -56,8 +56,6 @@ const PhotoDetailsModal = (props) => {
         photos={simPhotoArray}
         updateToFavPhotoIds={updateToFavPhotoIds}
         isFav={isFav}
-        onClosePhotoDetailsModal={onClosePhotoDetailsModal}
-        setPhotoSelected={setPhotoSelected}
       />
     </div>
   );

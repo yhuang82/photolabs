@@ -66,7 +66,7 @@ const useApplicationData = () => {
 
   const isFav = (id) => state.favs.includes(id);
 
-  // implement the data fetch process
+  // implement the data fetch process(tips: cam put the dependency arry for adding new photo)
   useEffect(() => {
     fetch("/api/photos")
       .then((res) => res.json())
