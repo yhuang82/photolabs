@@ -13,8 +13,14 @@ PhotoLabs is a React-based single-page application (SPA) that allows users to vi
 - User-friendly navigation with a notification for liked photos.
 
 ## Screen Shots
+#### 1. Index Page
+!["index page"](https://github.com/yhuang82/photolabs/blob/main/docs/photo-index.png.png?raw=true)
 
+#### 2. Modal View
+!["modal view"](https://github.com/yhuang82/photolabs/blob/main/docs/photo-modal.png.png?raw=true)
 
+#### 3. Select a Different Topic and Like an Image
+!["topic page"](https://github.com/yhuang82/photolabs/blob/main/docs/photo-topic.png.png?raw=true)
 
 ## Prerequisites
 
