@@ -9,6 +9,7 @@ const handleImageClick = (
   onClosePhotoDetailsModal
 ) => {
   // Use setPhotoSelected and onClosePhotoDetailsModal if available.
+  
   if (setPhotoSelected) {
     setPhotoSelected(photo);
   }
@@ -39,7 +40,7 @@ const PhotoListItem = (props) => {
         src={urls.regular}
         className="photo-list__image"
         onClick={() =>
-          handleImageClick(photo, setPhotoSelected, onClosePhotoDetailsModal)
+          {handleImageClick(photo, setPhotoSelected, onClosePhotoDetailsModal)}
         }
       />
       <div className="photo-list__user-details">

@@ -22,10 +22,11 @@ const App = () => {
     error,
   } = useApplicationData();
 
+  // right now the error is just for incorrect data fetching purpose
   if (error) {
     // Render an error component or message
     return (
-      <div className="error-message">An error occurred: {error.message}</div>
+      <h3 className="error-message">An error occurred: {error.message}</h3>
     );
   }
 
