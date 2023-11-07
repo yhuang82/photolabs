@@ -22,6 +22,14 @@ PhotoLabs is a React-based single-page application (SPA) that allows users to vi
 #### 3. Select a Different Topic and Like an Image
 !["topic page"](https://github.com/yhuang82/photolabs/blob/main/docs/photo-topic.png.png?raw=true)
 
+
+## Technical Specifications
+
+- Create React App (CRA) is used to develop the client application.
+- Webpack and Babel are utilized for building and transpiling.
+- Express.js forms the basis for the PhotoLabs API server application.
+
+
 ## Prerequisites
 
 What you need to have installed:
