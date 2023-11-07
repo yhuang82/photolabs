@@ -1,6 +1,34 @@
 const router = require("express").Router();
 
 module.exports = db => {
+  router.post("/photos", (req, res) => {
+    const { imageUrl } = req.body;
+
+    if (!imageUrl) {
+      return res.status(400).json({ error: "Image URL is required." });
+    }
+
+    // Construct the SQL query to insert the imageUrl into the database
+    const query = {
+      text: `INSERT INTO PHOTO (ID, FULL_URL, REGULAR_URL, CITY, COUNTRY, USER_ID, TOPIC_ID)
+      VALUES (nextval('photo_id_sequence'), $1, $2, $3, $4, $5, $6)`,
+      values: [imageUrl, imageUrl, "Montreal", "Canada", 1, 1], // Replace these values as needed
+    };
+
+    // Execute the SQL query
+    db.query(query)
+      .then(() => {
+        // Respond with a success message or the created photo object
+        res.status(201).json({ message: "Photo inserted successfully" });
+      })
+      .catch((error) => {
+        // Handle the database error
+        console.error("Error inserting photo:", error);
+        res.status(500).json({ error: "Internal server error" });
+      });
+  });
+
+
   router.get("/photos", (request, response) => {
     const protocol = request.protocol;
     const host = request.hostname;
@@ -59,6 +87,7 @@ module.exports = db => {
       response.json(rows[0].photo_data);
     });
   });
+
 
   return router;
 };

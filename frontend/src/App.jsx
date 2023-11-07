@@ -20,6 +20,7 @@ const App = () => {
     isFav,
     selectTopic,
     error,
+    passURLToBackend,
   } = useApplicationData();
 
   // right now the error is just for incorrect data fetching purpose
@@ -42,6 +43,7 @@ const App = () => {
         updateToFavPhotoIds={updateToFavPhotoIds}
         isFav={isFav}
         selectTopic={selectTopic}
+        passURLToBackend={passURLToBackend}
       />
       <PhotoDetailsModal
         isModalOpen={isModalOpen}

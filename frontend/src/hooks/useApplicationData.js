@@ -1,4 +1,5 @@
 import { useReducer, useEffect } from "react";
+import axios from "axios";
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: "FAV_PHOTO_ADDED",
@@ -112,6 +113,31 @@ const useApplicationData = () => {
       .catch((error) => dispatch({ type: ACTIONS.FETCH_ERROR, error }));
   };
 
+  // Create a function to fetch photos
+  const fetchPhotos = () => {
+    fetch("/api/photos")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok for get /api/photos");
+        }
+        return res.json();
+      })
+      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+      .catch((error) => {
+        dispatch({ type: ACTIONS.FETCH_ERROR, error });
+      });
+  };
+
+  // passURLToBackend
+  const passURLToBackend = (imageUrl) => {
+    axios.post("/api/photos", { imageUrl }).then((response) => {
+      console.log(response);
+      fetchPhotos(); 
+    });
+    // .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
+    // .catch((error) => dispatch({ type: ACTIONS.FETCH_ERROR, error }));
+  };
+
   return {
     ...state,
     updateToFavPhotoIds,
@@ -119,6 +145,7 @@ const useApplicationData = () => {
     setPhotoSelected,
     isFav,
     selectTopic,
+    passURLToBackend,
   };
 };
 

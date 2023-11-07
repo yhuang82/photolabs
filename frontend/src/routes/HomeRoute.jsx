@@ -15,12 +15,18 @@ const HomeRoute = (props) => {
     favs,
     updateToFavPhotoIds,
     isFav,
-    selectTopic
+    selectTopic,
+    passURLToBackend,
   } = props;
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} favs={favs} selectTopic={selectTopic} />
+      <TopNavigation
+        topics={topics}
+        favs={favs}
+        selectTopic={selectTopic}
+        passURLToBackend={passURLToBackend}
+      />
       <PhotoList
         photos={photos}
         updateToFavPhotoIds={updateToFavPhotoIds}
