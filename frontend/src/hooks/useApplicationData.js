@@ -129,13 +129,14 @@ const useApplicationData = () => {
   };
 
   // passURLToBackend
+  // no useeffect;
+  // user clicked on something document is already ready
   const passURLToBackend = (imageUrl) => {
     axios.post("/api/photos", { imageUrl }).then((response) => {
       console.log(response);
       fetchPhotos(); 
     });
-    // .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
-    // .catch((error) => dispatch({ type: ACTIONS.FETCH_ERROR, error }));
+    
   };
 
   return {
